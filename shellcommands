@@ -1,0 +1,280 @@
+1. standoutput 1>success.txt
+2. standerror  2>error.txt
+
+to set number in a file in vi editor
+
+vi myown.txt
+:set number
+
+for cat command to list data with numbers
+
+cat -n myown.txt
+
+
+############## to read data from files using conditions########################
+
+more,head,tail
+
+more -n myown.txt
+
+### top 10 lines
+
+more -10 myown.txt
+
+more +10 myown.txt ###### it display output from after the 10th line 
+
+##### head & tail
+
+syntax: head -2 filename
+
+head -2 myown.txt
+ first 2 lines
+
+tail -2 myown.txt
+
+last 2 lines
+
+############# grep
+syntax:
+
+grep [options] "string/pattern" file/files
+
+grep "d" myown.txt
+
+suppose you want search word "Above" , but inside file keyword is like above
+
+ignore casesentivity
+
+grep -i "Above" myown.txt 
+
+exact maching keyword like suppose line and output also showing lines
+
+
+grep -w "line" myown.txt
+
+
+to skip this keyword line use -v, it print remaing lines excpt this keyword line
+
+grep -v "line" myown.txt
+
+if we want exact output keyword use o
+
+grep -o "line" myown.txt
+
+to display matched line numbers
+
+grep -n "line" myown.txt
+
+how many lines this keyword presents 
+
+grep -c "line" myown.txt
+
+
+##################### ABC
+
+A PRINT OUT PUT AFTER THE LINE
+
+B PRINT OUTPUT ABOVE THE LINE
+
+C PRINT OUPUT ABOVE AND DOWN THE LINES
+
+grep -A n"above" myown.txt
+
+grep -B n"above" myown.txt
+
+grep -C n"above" myown.txt
+
+#### -l -r -h
+
+
+grep -l "lines" .  ########## it displays file names
+
+grep -h "lines" . ### it hides file names
+
+grep -r "lines" . ######## it searches that keyword in all folders in that path
+
+############ advanced grep -f , -e, E
+
+
+f is used to pass inputs as a file
+
+grep -f myown.txt  my_search.txt
+
+
+e is used to filter multiple strings 
+
+
+grep -e "lines" -e "above" myown.txt
+
+
+E is short cut of -e
+
+
+grep -E "lines|above|bash" myown.txt
+
+
+############################3 patterns / ^ $
+
+
+grep -E "^this" myown.txt  ######## word start with this
+
+grep -E "end$" myown.txt ################ world ends with end
+
+grep -E "\^" myown.txt ################ to find speciall character like $,^
+
+grep -E '\b' or "\btest" myown.txt ############ it add spaces before and after with repect or b
+
+grep -E "yb?" mywot.txt ############ matched pattern and option for b
+
+grep -E "yb*" myown.txt ############## optional multiple time of b or zero times
+
+########################## cut command########################
+
+syntax:
+ cut -c 1 myowntxt it prints first character
+ cut -b 1,3 myown.txt it print 1 and 3 characters
+
+ cut -b 1-4 myown.txt it print from 1 to 4 characters
+
+
+words or fields
+
+cut -f 1 myon.txt ## it prints firts word
+
+cut -f 1,3 myown.txt ##it prints first and third workds
+
+cut -f 1-3 myown.txt it print 1 to 3 words
+
+
+###suppose a line seperated with space, or / or :
+
+
+hi:world:where:r
+
+hi world where r
+
+hi/world/where/r
+
+
+
+cut -d ":" -f 1 myown.txt
+
+cut -d " " -f 3 myown.txt
+
+to supporse remaint out wihout delimeter use "s"
+
+cut -d " " -sf 3 myown.txt
+
+ 
+###########################3 awk
+
+
+[ /] EITHER SPACE OR /
+[AB] EITHER A OR B
+
+
+
+grep -E "[AB]" my_own.txt
+
+same way
+
+
+
+http -v | awk ' /version/ {print}'  ########### it print that line which matches version
+
+but i need version values
+
+http -v | aws -F '[ /]'   ' /version/ {print $4}'                     ### delimeter is either space or /
+
+apache2 -v | awk -F '[ /]' ' /version/ {print $4}'
+
+
+apache2 -v | grep -E "version" | cut -d "/" -f 2
+
+
+
+NR=1 OR 2 OR 3
+
+SUPPOSE YOUR REQUIRED line ON 2 ND LINE USE IN THIS BELOW WAY or line 1 NR==2
+
+apache2 -v | awk -F '[ /]' ' NR==1 {print $4}' 
+
+apach2 -v | awk 'NR=2 {print NR,$1,S3}'
+
+
+############################3 tee and tr
+
+
+tee command displays the output and copy the ouput to a file 
+
+
+ls -lrt | tee abc.txt
+to append output
+
+
+ls -lrt | tee -a abc.txt 
+###################################some important file related commands############
+
+realpath  > realpath <filename>
+
+basename > basename <filepath>
+
+dirname > dirname <filepath>
+
+############################################conditions#####################
+
+
+if conditon
+then
+    echo "hi"
+else
+    echo "no"
+fi
+
+i=1
+for i in 1 2 3
+do 
+   echo "$i"
+   ((i++))
+done
+
+
+#######################################################ssh
+
+ssh username@ip
+
+
+ssh -t is used to interact with termincall
+
+
+ssh -t -o strictkey=No username@ip
+
+giving password with below command
+
+sshpass -p "password" ssh -t -o strictkey=No username@ip
+
+
+
+############################# while
+
+
+while read server username ip pass
+do 
+   echo "$server"
+done < server.info.txt
+########################### function
+
+function my_function
+{  
+  command/statement
+}
+
+or
+
+
+my_function()
+{
+   command/statement
+}
+
+my_function

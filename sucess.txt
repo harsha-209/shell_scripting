@@ -1,0 +1,5 @@
+total 12
+drwxr-xr-x 2 minfy minfy 4096 Nov 12 11:48 ./
+drwxr-xr-x 6 minfy minfy 4096 Nov 12 11:47 ../
+-rw-r--r-- 1 minfy minfy   49 Nov 12 11:48 1
+-rw-r--r-- 1 minfy minfy    0 Nov 12 11:48 sucess.txt

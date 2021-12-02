@@ -1,0 +1,7 @@
+#!/usr/bin
+
+read -p "please enter your required service name to check status: " service_status
+
+echo "$service_status"
+
+

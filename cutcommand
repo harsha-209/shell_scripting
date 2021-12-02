@@ -1,0 +1,4 @@
+sudo systemctl status jenkins | grep -E "Active" | cut -d ":" -f 2 | cut -d " " -f 2
+
+apache2 -v | grep "version" | cut -d "/" -f 2 | cut -d " " -f 1
+

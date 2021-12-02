@@ -1,0 +1,10 @@
+#!/bin/bash
+
+###########3 list only directorys
+ls -ltr | grep -E "^d"
+
+
+to find ip in a file 
+
+
+cat mywont.txt | grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"
